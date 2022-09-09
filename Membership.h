@@ -15,5 +15,5 @@ class Membership {
 	string getTypeofMembership();
 	void setTypeofMembership(string typeofMembership);
 	double getDiscount();
-	
+	void setDiscount(double discount);	
 };
