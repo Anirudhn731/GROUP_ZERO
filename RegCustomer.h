@@ -2,19 +2,20 @@
 
 #include <iostream>
 #include "Membership.h"
+#include "Customer.h"
 
 using namespace std;
 
-class RegCustomer {
+class RegCustomer: public Customer {
 	string _dtReg;
-	Membership _membership;
+	Membership* _membership;
 	public:
 	RegCustomer();
-	RegCustomer(string dtReg);
+	RegCustomer(string custId, string name, string dtReg);
 	~RegCustomer();
 
 	string getDtReg();
 	void setDtReg(string dtReg);
-	void setMembership(Membership membership);
+	void setMembership(Membership* membership);
 
 };
