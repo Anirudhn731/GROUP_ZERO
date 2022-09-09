@@ -2,6 +2,7 @@
 #include <iostream>
 
 class Customer {
+	protected:
 	string _custId;
 	string _name;
 	public:
