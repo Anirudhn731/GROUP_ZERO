@@ -10,6 +10,7 @@ class MembershipFactory {
 	static int count; 
 	MembeshipFactory()
 	public:
-	Membership createMembership(string typeofMembership, double fees, double discount);
+	void createMembership(string typeofMembership, double fees, double discount);
+	void createMembership(const Membership& new_membership);
 	static MembershipFactory* createFactoryInstance();
 };
