@@ -25,3 +25,6 @@ double Membership::getDiscount() {
 void Membership::setDiscount(double discount) {
 	_discount = discount;
 }
+
+double Membership::getFees() { return _fees; }
+void Membership::setFees(double fees) { _fees = fees; }
