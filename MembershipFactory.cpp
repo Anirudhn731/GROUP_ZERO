@@ -6,6 +6,8 @@
 int MembershipFactory::count = 0;
 MembershipFactory* MembershipFactory::factoryInstance = nullptr;
 
+MembershipFactory::MembershipFactory() {}
+
 void MembershipFactory::createMembership(string typeofMemberhsip, double fees, double discount) {
 	if(_pool.find(typeofMembership) == _pool.end()) {
 		_pool.insert({typeofMembership, Membership(typeofMembership, discount, fees)});
@@ -32,3 +34,4 @@ MembershipFactory* MembershipFactory::createFactoryInstance() {
 
 	return mf;
 }
+
