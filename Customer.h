@@ -8,10 +8,11 @@ class Customer {
 	string _custId;
 	string _name;
 	string _email;
+	bool _isRegistered;
 	public:
 	Customer();
-	Customer(string custId, string name, string email);
-	~Customer();
+	Customer(string custId, string name, string email, bool isRegistered);
+	virtual	~Customer();
 
 	string getCustId();
 	void setCustId(string custId);
@@ -19,4 +20,6 @@ class Customer {
 	void setName(string name);
 	string getEmail();
 	void setEmail(string email);
+	bool isRegCustomer();
+	
 };

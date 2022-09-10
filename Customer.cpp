@@ -5,10 +5,11 @@ using namespace std;
 
 Customer::Customer() {}
 
-Customer::Customer(string custId, string name, string email){
+Customer::Customer(string custId, string name, string email, bool isRegistered){
 	_custId = custId;
 	_name = name;
 	_email = email;
+	_isRegistered = isRegistered;
 }
 
 Customer::~Customer() {}
@@ -21,3 +22,5 @@ void Customer::setName(string name) { _name = name; }
 
 string Customer::getEmail() { return _email; }
 void Customer::setEmail(string email) { _email = email; }
+
+bool Customer::isRegCustomer() { return _isRegistered; }

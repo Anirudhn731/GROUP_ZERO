@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Customer.h"
+#include "Membership.h"
 
 using namespace std;
 
@@ -17,4 +18,8 @@ class Company {
 	void setName(string name);
 	string getName();
 	void addCustomer(Customer* new_customer);
+
+	void displayCompany();
+	void createCustomer(Membership* membership);
+	void deleteCustomer();
 };

@@ -13,6 +13,8 @@ class MembershipFactory {
 	MembershipFactory();
 	public:
 	void createMembership(string typeofMembership, double fees, double discount);
-	void createMembership(Membership& new_membership);
+	//void createMembership(Membership& new_membership);
 	static MembershipFactory* createFactoryInstance();
+	Membership* getMembership();
+	void displayMembership();
 };

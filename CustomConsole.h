@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Lab9
-{
+//namespace Lab9
+//{
 	/// <summary>
 	/// Class to read values from the console based on the data type
 	/// </summary>
@@ -38,4 +38,4 @@ namespace Lab9
 		/// <returns></returns>
 		static char ReadChar();
 	};
-}
+//}

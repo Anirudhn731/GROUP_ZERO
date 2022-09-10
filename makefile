@@ -4,7 +4,7 @@ membership: Program.o Company.o Customer.o Membership.o MembershipFactory.o RegC
 Program.o: Program.cpp Company.h Customer.h Membership.h MembershipFactory.h RegCustomer.h CustomConsole.h
 	g++ -c Program.cpp
 
-Company.o: Company.cpp Company.h Customer.h
+Company.o: Company.cpp Company.h Customer.h Membership.h CustomConsole.h
 	g++ -c Company.cpp
 
 Customer.o: Customer.cpp Customer.h
