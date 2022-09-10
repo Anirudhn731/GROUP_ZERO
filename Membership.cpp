@@ -4,9 +4,10 @@
 using namespace std;
 
 Membership::Membership() {}
-Membership::Membership(string typeofMembership, double discount) {
+Membership::Membership(string typeofMembership, double discount, double fees) {
 	_typeofMembership = typeofMembership;
 	_discount = discount;
+	_fees = fees;
 }
 Membership::~Membership() {}
 

@@ -6,7 +6,7 @@ using namespace std;
 
 RegCustomer::RegCustomer() {}
 
-RegCustomer(string custId, string name, string dtReg) : Customer(custId, name) {
+RegCustomer::RegCustomer(string custId, string name, string email, string dtReg) : Customer(custId, name, email) {
 	_dtReg = dtReg;
 }
 

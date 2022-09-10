@@ -11,7 +11,7 @@ class RegCustomer: public Customer {
 	Membership* _membership;
 	public:
 	RegCustomer();
-	RegCustomer(string custId, string name, string dtReg);
+	RegCustomer(string custId, string name, string email, string dtReg);
 	~RegCustomer();
 
 	string getDtReg();

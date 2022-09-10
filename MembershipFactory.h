@@ -4,13 +4,15 @@
 #include <map>
 #include "Membership.h"
 
+using namespace std;
+
 class MembershipFactory {
-	Map<String, Membership> _pool
+	map<string, Membership> _pool;
 	static MembershipFactory* factoryInstance;
 	static int count; 
-	MembeshipFactory()
+	MembershipFactory();
 	public:
 	void createMembership(string typeofMembership, double fees, double discount);
-	void createMembership(const Membership& new_membership);
+	void createMembership(Membership& new_membership);
 	static MembershipFactory* createFactoryInstance();
 };

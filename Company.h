@@ -4,6 +4,8 @@
 #include <vector>
 #include "Customer.h"
 
+using namespace std;
+
 class Company {
 	string _name;
 	vector<Customer*> _customers;
