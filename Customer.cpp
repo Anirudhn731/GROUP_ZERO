@@ -3,19 +3,19 @@
 
 using namespace std;
 
+long Customer::_autoCustId = 100;
+
 Customer::Customer() {}
 
-Customer::Customer(string custId, string name, string email, bool isRegistered){
-	_custId = custId;
+Customer::Customer(string name, string email){
+	_custId = _autoCustId++;
 	_name = name;
 	_email = email;
-	_isRegistered = isRegistered;
 }
 
 Customer::~Customer() {}
 
-string Customer::getCustId() { return _custId; }
-void Customer::setCustId(string custId) { _custId = custId; }
+long Customer::getCustId() { return _custId; }
 
 string Customer::getName() { return _name; }
 void Customer::setName(string name) { _name = name; }
@@ -23,4 +23,3 @@ void Customer::setName(string name) { _name = name; }
 string Customer::getEmail() { return _email; }
 void Customer::setEmail(string email) { _email = email; }
 
-bool Customer::isRegCustomer() { return _isRegistered; }

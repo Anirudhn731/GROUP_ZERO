@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstring>
+#include <ctime>
 #include "RegCustomer.h"
 #include "Membership.h"
 
@@ -6,14 +8,16 @@ using namespace std;
 
 RegCustomer::RegCustomer() {}
 
-RegCustomer::RegCustomer(string custId, string name, string email, string dtReg, bool isRegistered, Membership* membership) : Customer(custId, name, email, isRegistered) {
-	_dtReg = dtReg;
+RegCustomer::RegCustomer(string name, string email, Membership* membership) : Customer(name, email) {
+	time_t currdate = time(0); 
+	strftime(_dtReg, 11, "%d/%m/%Y", localtime(&currdate));
+	
 	_membership = membership;
 }
 
 RegCustomer::~RegCustomer() {}
 
-string RegCustomer::getDtReg() { return _dtReg; }
-void RegCustomer::setDtReg(string dtReg) { _dtReg = dtReg; }
+char* RegCustomer::getDtReg() { return _dtReg; }
+void RegCustomer::setDtReg(char* dtReg) { strcpy(_dtReg, dtReg); }
 
 string RegCustomer::getTypeofMembership() { return _membership->getTypeofMembership(); }

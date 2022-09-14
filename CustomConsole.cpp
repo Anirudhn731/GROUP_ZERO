@@ -4,8 +4,6 @@ using namespace std;
 
 #include "CustomConsole.h"
 
-//namespace Lab9
-//{
 	string CustomConsole::ReadString()
 	{
 		string str;
@@ -40,4 +38,10 @@ using namespace std;
 		cin >> c;
 		return c;
 	}
-//}
+	
+	char CustomConsole::ReadLong()
+	{
+		long l;
+		cin >> l;
+		return l;
+	}

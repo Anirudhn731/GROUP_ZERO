@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include "Company.h"
 #include "Customer.h"
@@ -13,7 +14,11 @@ Company::Company(string name) {
 	_name = name;
 }
 
-Company::~Company() {}
+Company::~Company() {
+	for(int i = 0; i < _customers.size(); i++) {
+		delete _customers[i];
+	}
+}
 
 void Company::setName(string name) { _name  = name; }
 
@@ -25,23 +30,18 @@ void Company::addCustomer(Customer* new_customer) {
 
 void Company::createCustomer(Membership* membership) {
 	Customer* newCustomer;
-	string name, custId, email; 
+	string name, email; 
 	cout << "Enter Customer Details here: " << endl;
 	cout << "Enter Customer Name: ";
 	name = CustomConsole::ReadString();
-	cout << "Enter Customer ID: ";
-	custId = CustomConsole::ReadString();
 	cout << "Enter Customer Email: ";
 	email = CustomConsole::ReadString();
 	if(membership != nullptr) {
-		string dtReg;
-		cout << "Enter Registration Date:- ";
-		dtReg = CustomConsole::ReadString();
-		newCustomer = new RegCustomer(custId, name, email, dtReg, true, membership);
+		newCustomer = new RegCustomer(name, email, membership);
 		addCustomer(newCustomer);
 	}
 	else {
-		newCustomer = new Customer(custId, name, email, false);
+		newCustomer = new Customer(name, email);
 		addCustomer(newCustomer);
 	}
 }
@@ -49,9 +49,9 @@ void Company::createCustomer(Membership* membership) {
 void Company::deleteCustomer() {
 	int i;
 	cout << "Enter Customer Id: ";
-	string custId = CustomConsole::ReadString();
+	long custId = CustomConsole::ReadLong();
 	
-	for(i = 0; i <= _customers.size(); i++) {
+	for(i = 0; i < _customers.size(); i++) {
 		if(custId == _customers[i]->getCustId()) {
 			break;
 		}
@@ -61,10 +61,11 @@ void Company::deleteCustomer() {
 		cout << "You've Entered Invalid Customer ID!" << endl;
 	}
 	else {
+		cout << "...Deleting" << endl;
 		delete _customers[i];
 		_customers.erase(_customers.begin() + i);
+		cout << "The customer has been deleted!" << endl;
 	}
-	
 }
 			
 	
@@ -74,23 +75,29 @@ void Company::displayCompany() {
 	cout << endl << "Company Name: " << _name << endl;
 	cout << "Customers:- " << endl;
 	cout << "-------------------------------------------------------------------" << endl;
-	cout << "CUSTOMERID\tNAME\tEMAIL\t\tisRegistered?\tDate Registered\tMembership" << endl;
+	cout << "CUSTOMERID" << setw(13);
+	cout << "NAME" << setw(15);
+	cout << "EMAIL" << setw(25);
+	cout << "isRegistered?" << setw(20);
+	cout << "Date Registered" << setw(17);
+	cout << "Membership" << setw(10) << endl;
 	cout << "-------------------------------------------------------------------" << endl;
 	
 	for(int i = 0; i < _customers.size(); i++) {
-		cout << _customers[i]->getCustId() << "\t\t";
-		cout << _customers[i]->getName() << "\t";
-		cout << _customers[i]->getEmail() << "\t";
-		if(_customers[i]->isRegCustomer()) {
-			RegCustomer* rc = dynamic_cast<RegCustomer*>(_customers[i]);
-			cout << "Yes" << "\t";
-			cout << rc->getDtReg() << "\t";
-			cout << rc->getTypeofMembership() << "\t";
+		cout << _customers[i]->getCustId() << setw(20);
+		cout << _customers[i]->getName() << setw(20);
+		cout << _customers[i]->getEmail() << setw(17);
+		
+		RegCustomer* rc = dynamic_cast<RegCustomer*>(_customers[i]);
+		if(rc != nullptr) {
+			cout << "Yes" << setw(20);
+			cout << rc->getDtReg() << setw(17);
+			cout << rc->getTypeofMembership() << setw(10);
 		}
 		else {
-			cout << "---" << "\t\t";
-			cout << "---" << "\t\t";
-			cout << "---" << "\t\t";
+			cout << "---" << setw(20);
+			cout << "---" << setw(17);
+			cout << "---" << setw(10);
 		}
 		
 		cout << endl;

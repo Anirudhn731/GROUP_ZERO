@@ -5,21 +5,19 @@ using namespace std;
 
 class Customer {
 	protected:
-	string _custId;
+	static long  _autoCustId;
+	long _custId;
 	string _name;
 	string _email;
-	bool _isRegistered;
-	public:
 	Customer();
-	Customer(string custId, string name, string email, bool isRegistered);
+	public:
+	Customer(string name, string email);
 	virtual	~Customer();
 
-	string getCustId();
-	void setCustId(string custId);
+	long getCustId();
 	string getName();
 	void setName(string name);
 	string getEmail();
 	void setEmail(string email);
-	bool isRegCustomer();
 	
 };

@@ -10,7 +10,7 @@ using namespace std;
 class Company {
 	string _name;
 	vector<Customer*> _customers;
-	//Instead of vector, we could use sets/lists etc., but for simplicity, we are using vectors here
+	//Instead of vector, we could use maps/lists etc., but for simplicity, we are using vectors here
 	public:
 	Company();
 	Company(string name);

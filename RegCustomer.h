@@ -7,14 +7,14 @@
 using namespace std;
 
 class RegCustomer: public Customer {
-	string _dtReg;
+	char _dtReg[11];
 	Membership* _membership;
 	public:
 	RegCustomer();
-	RegCustomer(string custId, string name, string email, string dtReg, bool isRegistered, Membership* membership);
+	RegCustomer(string name, string email, Membership* membership);
 	~RegCustomer();
 
-	string getDtReg();
-	void setDtReg(string dtReg);
+	char* getDtReg();
+	void setDtReg(char* dtReg);
 	string getTypeofMembership();
 };

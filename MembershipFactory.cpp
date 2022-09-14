@@ -6,16 +6,17 @@
 
 using namespace std;
 
-int MembershipFactory::count = 0;
-MembershipFactory* MembershipFactory::factoryInstance = nullptr;
+MembershipFactory* MembershipFactory::_factoryInstance = nullptr;
 
 MembershipFactory::MembershipFactory() {}
 
+//FACTORY PATTERN
 void MembershipFactory::createMembership(string typeofMembership, double fees, double discount) {
 	if(_pool.find(typeofMembership) == _pool.end()) {
 		_pool.insert({typeofMembership, Membership(typeofMembership, discount, fees)});
 	}
 }
+
 /*
 void MembershipFactory::createMembership(Membership& new_membership) {
 	string type = new_membership.getTypeofMembership();
@@ -24,18 +25,14 @@ void MembershipFactory::createMembership(Membership& new_membership) {
 	}
 }
 */
+
+//SINGLETON PATTERN
 MembershipFactory* MembershipFactory::createFactoryInstance() {
-	MembershipFactory* mf;
-	if(MembershipFactory::count == 0) {
-		mf = new MembershipFactory();
-		MembershipFactory::count++;
-		MembershipFactory::factoryInstance = mf;
-	}
-	else {
-		mf = MembershipFactory::factoryInstance;
+	if(_factoryInstance == nullptr) {
+		_factoryInstance = new MembershipFactory();
 	}
 
-	return mf;
+	return _factoryInstance;
 }
 
 void MembershipFactory::displayMembership() {
@@ -62,6 +59,7 @@ Membership* MembershipFactory::getMembership() {
 		cout << (iter->second).getFees() << "\t";
 		cout << (iter->second).getDiscount() << "%" << endl;
 		cout << endl;
+		
 		cout << "Do you want a " << iter->first << " Membership?(Y/N): ";
 		yn = CustomConsole::ReadChar();
 		while(yn != 'Y' && yn != 'N' && yn != 'y' && yn != 'n') {
@@ -76,4 +74,7 @@ Membership* MembershipFactory::getMembership() {
 	return nullptr;
 }
 	
+MembershipFactory::~MembershipFactory() {
+	delete _factoryInstance;	
+}
 	

@@ -1,7 +1,6 @@
 #pragma once
 
-//namespace Lab9
-//{
+
 	/// <summary>
 	/// Class to read values from the console based on the data type
 	/// </summary>
@@ -37,5 +36,10 @@
 		/// </summary>
 		/// <returns></returns>
 		static char ReadChar();
+		
+		/// <summary>
+		/// Method to read long values from the console
+		/// </summary>
+		/// <returns></returns>
+		static char ReadLong();
 	};
-//}
